@@ -5,6 +5,7 @@ import { Colors } from "@/styles/theme";
 import Logo from "@/assets/images/logo.png";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigation } from "@/types";
+import { useCreateAccount } from "@/stores";
 
 interface IAuthBar {
   currentStep?: number;
@@ -14,12 +15,22 @@ interface IAuthBar {
 export function AuthBar({ currentStep, totalSteps }: IAuthBar) {
   const { navigate } = useNavigation<StackNavigation>();
   const showProgressBar = currentStep !== undefined && totalSteps !== undefined;
+  const { handlePreviousStep } = useCreateAccount();
+
+  function handleGoBack() {
+    if (currentStep === 0) {
+      navigate("Welcome");
+      return;
+    }
+
+    handlePreviousStep();
+  }
 
   return (
     <View style={authBar.container}>
       <View style={topBarStyles.container}>
         <IconButton
-          onPress={() => navigate("Welcome")}
+          onPress={handleGoBack}
           icon={
             <ArrowLeft color={topBarStyles.icon.color} />
           }

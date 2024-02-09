@@ -23,6 +23,7 @@ interface ICreateAccount {
   currentStep: number;
   totalSteps: number;
   handleNextStep: (data: Partial<TFormValues>) => void;
+  handlePreviousStep: () => void;
 }
 
 export const useUser = create<IUseUser>((set, get) => ({
@@ -77,5 +78,10 @@ export const useCreateAccount = create<ICreateAccount>((set, get) => ({
       currentStep: prevCurrentStep + 1,
       formInitialValues: { ...prevFormValues, ...data }
     });
+  },
+  handlePreviousStep: () => {
+    const currentStep = get().currentStep;
+
+    set({ currentStep: currentStep - 1 });
   }
 }));
