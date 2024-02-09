@@ -18,6 +18,7 @@ export function LoginForm() {
     isLoading,
     errorMessage
   } = useLogin();
+  const { navigate } = useNavigation<StackNavigation>();
   const {
     handleChange,
     handleBlur,
@@ -96,7 +97,7 @@ export function LoginForm() {
         )}
       </View>
       <Link
-        onPress={() => console.log('test')}
+        onPress={() => navigate("CreateAccount")}
         style={styles.centerText}
       >
         Don’t have an account?
