@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.errorNotification,
     paddingVertical: 12,
     paddingHorizontal: 8,
-    borderRadius: 8
+    borderRadius: 8,
+    alignItems: "center"
   },
   text: {
     flexWrap: "wrap",
