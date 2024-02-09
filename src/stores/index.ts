@@ -12,16 +12,17 @@ interface IUseUser {
 }
 
 type TFormValues = {
-  firstName: string,
-  lastName: string,
-  email: string
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
 }
 
 interface ICreateAccount {
   formInitialValues: TFormValues;
   currentStep: number;
   totalSteps: number;
-  handleNextStep: (data: TFormValues) => void;
+  handleNextStep: (data: Partial<TFormValues>) => void;
 }
 
 export const useUser = create<IUseUser>((set, get) => ({
@@ -63,7 +64,8 @@ export const useCreateAccount = create<ICreateAccount>((set, get) => ({
   formInitialValues: {
     firstName: "",
     lastName: "",
-    email: ""
+    email: "",
+    address: ""
   },
   currentStep: 0,
   totalSteps: 4,
