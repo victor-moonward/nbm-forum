@@ -4,9 +4,9 @@ import { Button, Input, Link, Text, Title } from "@/components/common";
 import { ArrowRight } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
 import { Notification } from ".";
-import { useCreateAccountForm } from "@/services/createAccount";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigation } from "@/types";
+import { useCreateAccountForm } from "@/hooks/useCreateAccountForm";
 
 export function CredentialsForm() {
   const {
