@@ -1,3 +1,5 @@
+import { StackNavigationProp } from "@react-navigation/stack";
+
 export interface ISVG {
   color?: string;
   [key: string]: string | number | undefined;
@@ -15,3 +17,12 @@ export interface UserData {
     telephone: string;
   }
 }
+
+export type RootStackParamList = {
+  Feed: undefined;
+  Welcome: undefined;
+  Login: undefined;
+  CreateAccount: undefined;
+}
+
+export type StackNavigation = StackNavigationProp<RootStackParamList>;
