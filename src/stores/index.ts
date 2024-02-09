@@ -15,6 +15,7 @@ interface CreateAccountProps {
   currentStep: number;
   totalSteps: number;
   handleNextStep: (data: Partial<TFormValues>) => void;
+  handlePreviousStep: () => void;
 }
 
 type TFormValues = {
