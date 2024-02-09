@@ -7,6 +7,8 @@ import { Colors, Fonts } from "@/styles/theme";
 import { useLogin } from "@/services/login";
 import { Notification } from ".";
 import { dictionaryMessage } from "@/constants/validation";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigation } from "@/types";
 
 export function LoginForm() {
   const [hidePassword, setHidePassword] = useState(true);
@@ -17,6 +19,7 @@ export function LoginForm() {
     isLoading,
     errorMessage
   } = useLogin();
+  const { navigate } = useNavigation<StackNavigation>();
 
   function handleShowPassword() {
     setHidePassword(prev => !prev)
@@ -93,7 +96,7 @@ export function LoginForm() {
             )}
           </View>
           <Link
-            onPress={() => console.log('test')}
+            onPress={() => navigate("CreateAccount")}
             style={styles.centerText}
           >
             Don’t have an account?

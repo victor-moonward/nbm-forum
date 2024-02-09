@@ -4,6 +4,7 @@ import { Button, Text, Title } from "@/components/common";
 import { ArrowRight, RocketRotated } from "@/assets/icons";
 import { useEffect, useRef } from "react";
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigation } from "@/types";
 
 const ANIMATION_DURATION = 1000;
 
@@ -21,19 +22,19 @@ function DescriptionBlock() {
 }
 
 function ActionsBlock() {
-  const navigation = useNavigation();
+  const { navigate } = useNavigation<StackNavigation>();
 
   return (
     <View style={actionsStyles.container}>
       <Button
-        onPress={() => console.log('test')}
+        onPress={() => navigate("CreateAccount")}
         icon={<ArrowRight color={Colors.clean} />}
       >
         Create an Account
       </Button>
       <Button
         outlined
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigate("Login")}
         icon={<ArrowRight color={Colors.primary} />}
       >
         Sign In
