@@ -29,6 +29,7 @@ export function LocationBlock() {
       <Button
         onPress={() => handleNextStep({ address: selectedOption })}
         icon={<ArrowRight color={Colors.clean} />}
+        disabled={!selectedOption}
       >
         Next
       </Button>
