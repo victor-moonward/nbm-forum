@@ -5,3 +5,7 @@ export * from './VisibilityOff';
 export * from './VisibilityOn';
 export * from './Error';
 export * from './ArrowForward';
+export * from './TextField';
+export * from './Counter';
+export * from './Numbers';
+export * from './Check';
