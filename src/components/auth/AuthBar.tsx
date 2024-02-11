@@ -18,7 +18,7 @@ export function AuthBar({ currentStep, totalSteps }: IAuthBar) {
   const { handlePreviousStep } = useCreateAccount();
 
   function handleGoBack() {
-    if (currentStep === 0) {
+    if (currentStep === 0 || !currentStep) {
       navigate("Welcome");
       return;
     }
