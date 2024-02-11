@@ -16,6 +16,9 @@ type TFormValues = {
   lastName: string;
   email: string;
   address: string;
+  password: string;
+  confirmPassword: string;
+  acceptTerms: boolean;
 }
 
 interface ICreateAccount {
@@ -66,7 +69,10 @@ export const useCreateAccount = create<ICreateAccount>((set, get) => ({
     firstName: "",
     lastName: "",
     email: "",
-    address: ""
+    address: "",
+    password: "",
+    confirmPassword: "",
+    acceptTerms: false
   },
   currentStep: 0,
   totalSteps: 4,
