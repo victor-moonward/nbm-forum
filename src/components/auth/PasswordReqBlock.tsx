@@ -7,8 +7,6 @@ interface IRequirements {
 }
 
 export function PasswordReqBlock({ hasErrors }: IRequirements) {
-  console.log(hasErrors);
-
   return (
     <View style={[styles.container, hasErrors ? styles.error : undefined]}>
       <Text style={styles.text}>Your password must...</Text>
