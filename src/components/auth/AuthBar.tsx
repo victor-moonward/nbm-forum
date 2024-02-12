@@ -18,7 +18,7 @@ export function AuthBar({ currentStep, totalSteps }: IAuthBar) {
   const { handlePreviousStep } = useCreateAccount();
 
   function handleGoBack() {
-    if (currentStep === 0 || !currentStep) {
+    if (currentStep === 1 || !currentStep) {
       navigate("Welcome");
       return;
     }
@@ -46,7 +46,7 @@ export function AuthBar({ currentStep, totalSteps }: IAuthBar) {
             <View
               style={[
                 progressBarStyles.bar,
-                currentStep >= index ? progressBarStyles.activeBar : undefined
+                currentStep >= index + 1 ? progressBarStyles.activeBar : undefined
               ]}
             />
           ))}

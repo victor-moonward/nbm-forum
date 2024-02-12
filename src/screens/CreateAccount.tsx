@@ -2,7 +2,8 @@ import {
   AuthBar,
   CredentialsForm,
   LocationBlock,
-  PasswordForm
+  PasswordForm,
+  ProfilePictureBlock
 } from "@/components/auth";
 import { useCreateAccount } from "@/stores";
 import { Colors } from "@/styles/theme";
@@ -17,9 +18,10 @@ export function CreateAccount() {
         currentStep={currentStep}
         totalSteps={totalSteps}
       />
-      {currentStep === 0 && <CredentialsForm />}
-      {currentStep === 1 && <LocationBlock />}
-      {currentStep === 2 && <PasswordForm />}
+      {currentStep === 1 && <CredentialsForm />}
+      {currentStep === 2 && <LocationBlock />}
+      {currentStep === 3 && <PasswordForm />}
+      {currentStep === 4 && <ProfilePictureBlock />}
     </View>
   )
 }

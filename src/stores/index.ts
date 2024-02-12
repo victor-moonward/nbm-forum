@@ -19,6 +19,7 @@ type TFormValues = {
   password: string;
   confirmPassword: string;
   acceptTerms: boolean;
+  avatar: string;
 }
 
 interface ICreateAccount {
@@ -36,7 +37,6 @@ export const useUser = create<IUseUser>((set, get) => ({
   token: null,
   getUserData: async () => {
 
-    // Wrapped just to show the exceptional loader
     setTimeout(async () => {
       const token = await getStoredData({ id: 'user-token' });
       const data = await getStoredData({ id: 'user-data' });
@@ -57,8 +57,8 @@ export const useUser = create<IUseUser>((set, get) => ({
     }, 3000);
   },
   setUserData: async ({ accessToken, user }: UserData) => {
-    const token = await storeData({ id: 'user-token', value: accessToken });
-    const data = await storeData({ id: 'user-data', value: user });
+    await storeData({ id: 'user-token', value: accessToken });
+    await storeData({ id: 'user-data', value: user });
 
     set({ isUserSignedIn: true });
   },
@@ -72,18 +72,24 @@ export const useCreateAccount = create<ICreateAccount>((set, get) => ({
     address: "",
     password: "",
     confirmPassword: "",
-    acceptTerms: false
+    acceptTerms: false,
+    avatar: ""
   },
-  currentStep: 0,
+  currentStep: 1,
   totalSteps: 4,
   handleNextStep: (data) => {
     const prevCurrentStep = get().currentStep;
     const prevFormValues = get().formInitialValues;
+    const lastStep = get().totalSteps;
 
-    set({
-      currentStep: prevCurrentStep + 1,
-      formInitialValues: { ...prevFormValues, ...data }
-    });
+    if (prevCurrentStep === lastStep) {
+      set({ formInitialValues: { ...prevFormValues, ...data } });
+    } else {
+      set({
+        currentStep: prevCurrentStep + 1,
+        formInitialValues: { ...prevFormValues, ...data }
+      });
+    }
   },
   handlePreviousStep: () => {
     const currentStep = get().currentStep;
