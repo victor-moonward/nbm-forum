@@ -8,8 +8,8 @@ export interface ISVG {
 export interface UserData {
   accessToken: string;
   user: {
-    address: null;
-    avatar: null;
+    address: string;
+    avatar: string;
     email: string;
     firstName: string;
     id: number;
