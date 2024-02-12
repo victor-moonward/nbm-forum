@@ -24,14 +24,6 @@ type TFormValues = {
   address: string;
 }
 
-interface CreateAccountProps {
-  formInitialValues: TFormValues;
-  currentStep: number;
-  totalSteps: number;
-  handleNextStep: (data: Partial<TFormValues>) => void;
-  handlePreviousStep: () => void;
-}
-
 export const useUser = create<UseUserProps>((set) => ({
   isLoading: true,
   isUserSignedIn: false,
