@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import { Pressable } from "react-native";
 
-interface IIconButton {
+interface IconButtonProps {
   onPress: any;
   icon: ReactNode
 }
 
-export function IconButton({ onPress, icon}: IIconButton) {
+export function IconButton({ onPress, icon }: IconButtonProps) {
   return (
     <Pressable onPress={onPress}>
       {icon}
