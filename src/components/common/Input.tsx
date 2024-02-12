@@ -1,13 +1,25 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import { Colors, Fonts } from "@/styles/theme";
 import { Text } from ".";
+import { ChangeEvent, ReactNode } from "react";
 
-// TO-DO: Input props
-interface IInput {
-  [key: string]: any;
+interface InputProps {
+  label: string;
+  icon?: ReactNode;
+  error: string | undefined;
+  placeholder: string;
+  onChangeText?: (e: string | ChangeEvent<any>) => void;
+  value?: string | undefined;
+  onBlur?: (e: any) => void;
+  secureTextEntry?: boolean;
 }
 
-export function Input({ label, icon, error, ...rest }: IInput) {
+export function Input({ 
+  label, 
+  icon, 
+  error, 
+  ...rest 
+}: InputProps) {
   return (
     <View style={styles.container}>
       <View style={styles.labelContainer}>
