@@ -1,16 +1,16 @@
 import { ReactElement, ReactNode } from "react";
 import {
+  GestureResponderEvent,
   Pressable,
   StyleSheet,
   Text
 } from "react-native";
 import { Colors, Fonts } from "@/styles/theme";
 
-// TO-DO: Button Props
-interface IButton {
+interface ButtonProps {
   children: ReactNode;
   outlined?: boolean;
-  onPress: (event: any) => void
+  onPress: (event: GestureResponderEvent) => void;
   icon?: ReactElement;
   disabled?: boolean;
 }
@@ -21,7 +21,7 @@ export function Button({
   onPress,
   icon,
   disabled
-}: IButton) {
+}: ButtonProps) {
   return (
     <Pressable
       onPress={onPress}
