@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { getStoredData, storeData } from "@/utils/storage";
 import { UserData } from "@/types";
 
-interface IUseUser {
+interface UseUserProps {
   isLoading: boolean;
   isUserSignedIn: boolean;
   data: null | UserData['user'];
@@ -17,14 +17,14 @@ type TFormValues = {
   email: string
 }
 
-interface ICreateAccount {
+interface CreateAccountProps {
   formInitialValues: TFormValues;
   currentStep: number;
   totalSteps: number;
   handleNextStep: (data: TFormValues) => void;
 }
 
-export const useUser = create<IUseUser>((set, get) => ({
+export const useUser = create<UseUserProps>((set, get) => ({
   isLoading: true,
   isUserSignedIn: false,
   data: null,
@@ -59,7 +59,7 @@ export const useUser = create<IUseUser>((set, get) => ({
   },
 }));
 
-export const useCreateAccount = create<ICreateAccount>((set, get) => ({
+export const useCreateAccount = create<CreateAccountProps>((set, get) => ({
   formInitialValues: {
     firstName: "",
     lastName: "",
