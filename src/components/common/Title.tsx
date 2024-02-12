@@ -4,12 +4,12 @@ import {
   Fonts
 } from "@/styles/theme";
 
-interface ITitle {
+interface TitleProps {
   children: string;
   style?: TextStyle;
 }
 
-export function Title({ children, style }: ITitle) {
+export function Title({ children, style }: TitleProps) {
   return (
     <Text style={[styles.text, style]}>
       {children}
