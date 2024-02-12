@@ -15,8 +15,9 @@ import {
   VisibilityOn,
 } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
-import { useCreateAccountForm } from "@/hooks/useCreateAccountForm";
 import { PasswordReqBlock } from "./PasswordReqBlock";
+import { useCreateAccount } from "@/stores";
+import { passwordsSchema } from "@/services/signup";
 
 function handleIconVisibility(hiddenPassword: boolean) {
   return hiddenPassword ? <VisibilityOff color={Colors.border} /> : <VisibilityOn color={Colors.border} />;
@@ -24,10 +25,10 @@ function handleIconVisibility(hiddenPassword: boolean) {
 
 export function PasswordForm() {
   const [hidePassword, setHidePassword] = useState({
-    password: false,
-    confirmPassword: false
+    password: true,
+    confirmPassword: true
   });
-  const { formInitialValues, passwordsSchema, handleNextStep } = useCreateAccountForm();
+  const { formInitialValues, handleNextStep} = useCreateAccount(state => state);
 
   function handleShowPassword(type: "password" | "confirmPassword") {
     setHidePassword(prev => ({ ...prev, [type]: !prev[type] }));

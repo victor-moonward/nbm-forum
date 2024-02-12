@@ -6,14 +6,11 @@ import { Colors, Fonts } from "@/styles/theme";
 import { Notification } from ".";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigation } from "@/types";
-import { useCreateAccountForm } from "@/hooks/useCreateAccountForm";
+import { useCreateAccount } from "@/stores";
+import { credentialsSchema } from "@/services/signup";
 
 export function CredentialsForm() {
-  const {
-    formInitialValues,
-    credentialsSchema,
-    handleNextStep
-  } = useCreateAccountForm();
+  const {formInitialValues, handleNextStep} = useCreateAccount(state => state)
   const { navigate } = useNavigation<StackNavigation>();
 
   return (
