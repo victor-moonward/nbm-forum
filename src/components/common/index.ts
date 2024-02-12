@@ -6,3 +6,4 @@ export * from './IconButton';
 export * from './Link';
 export * from './AutoCompleteInput';
 export * from './CheckBox';
+export * from './UploadFileInput';
