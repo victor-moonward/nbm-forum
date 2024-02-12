@@ -24,11 +24,6 @@ async function login(data: TLoginData) {
   }
 }
 
-const formInitialValues = {
-  email: "",
-  password: ""
-};
-
 const loginSchema = Yup.object().shape({
   email: Yup
     .string()
@@ -57,7 +52,6 @@ export function useLogin() {
 
   return {
     handleFormSubmit,
-    formInitialValues,
     loginSchema,
     isLoading: isPending,
     errorMessage: (isError || isSuccess) && dictionaryMessage.INVALID_CREDENTIALS
