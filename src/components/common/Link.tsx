@@ -1,4 +1,5 @@
 import {
+  GestureResponderEvent,
   Pressable,
   StyleSheet,
   Text as TextCP,
@@ -7,14 +8,13 @@ import {
 import { Colors, Fonts } from "@/styles/theme";
 import { ReactNode } from "react";
 
-// TO-DO: Link props
-interface IText {
+interface LinkProps {
   children: ReactNode;
   style?: TextStyle;
-  onPress: any;
+  onPress: (event: GestureResponderEvent) => void;
 }
 
-export function Link({ children, style, onPress }: IText) {
+export function Link({ children, style, onPress }: LinkProps) {
   return (
     <Pressable onPress={onPress} style={styles.container}>
       <TextCP style={[styles.text, style]}>
