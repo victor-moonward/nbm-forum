@@ -1,13 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-interface IStoreData {
+interface StoreDataProps {
   id: string;
   value: unknown;
 }
 
-interface IGetData extends Omit<IStoreData, "value"> { }
+interface GetDataProps extends Omit<StoreDataProps, "value"> { }
 
-export async function storeData({ id, value }: IStoreData) {
+export async function storeData({ id, value }: StoreDataProps) {
   try {
     await AsyncStorage.setItem(id, JSON.stringify(value));
   } catch (e) {
@@ -15,7 +15,7 @@ export async function storeData({ id, value }: IStoreData) {
   }
 }
 
-export async function getStoredData({ id }: IGetData) {
+export async function getStoredData({ id }: GetDataProps) {
   try {
     const value = await AsyncStorage.getItem(id);
     return value !== null ? JSON.parse(value) : null;

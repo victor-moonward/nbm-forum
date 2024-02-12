@@ -5,11 +5,11 @@ import { Rocket } from "@/assets/icons/Rocket";
 
 const ANIMATION_DURATION = 2000;
 
-interface ISplashScreen {
+interface SplashScreenProps {
   colorSchema?: "primary" | "secondary";
 }
 
-export function SplashScreen({ colorSchema = "primary" }: ISplashScreen) {
+export function SplashScreen({ colorSchema = "primary" }: SplashScreenProps) {
   const translateAnim = useRef(new Animated.Value(500)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
 

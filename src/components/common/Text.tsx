@@ -5,12 +5,12 @@ import {
 } from "react-native";
 import { Colors, Fonts } from "@/styles/theme";
 
-interface IText {
+interface TextProps {
   children: string;
   style?: TextStyle;
 }
 
-export function Text({ children, style }: IText) {
+export function Text({ children, style }: TextProps) {
   return (
     <TextCP style={[styles.text, style]}>
       {children}
