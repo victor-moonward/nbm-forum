@@ -1,8 +1,8 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg";
-import { ISVG } from "@/types";
+import { SVGProps } from "@/types";
 
-export const Rocket = ({ color = "#FFF", ...props }: ISVG) => (
+export const Rocket = ({ color = "#FFF", ...props }: SVGProps) => (
   <Svg
     width={120}
     height={179}

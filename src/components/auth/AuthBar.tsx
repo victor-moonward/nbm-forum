@@ -7,12 +7,12 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigation } from "@/types";
 import { useCreateAccount } from "@/stores";
 
-interface IAuthBar {
+interface AuthBarProps {
   currentStep?: number;
   totalSteps?: number;
 }
 
-export function AuthBar({ currentStep, totalSteps }: IAuthBar) {
+export function AuthBar({ currentStep, totalSteps }: AuthBarProps) {
   const { navigate } = useNavigation<StackNavigation>();
   const showProgressBar = currentStep !== undefined && totalSteps !== undefined;
   const { handlePreviousStep } = useCreateAccount();
