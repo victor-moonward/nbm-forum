@@ -71,10 +71,7 @@ export function CredentialsForm() {
             Next
           </Button>
           <View style={styles.linkContainer}>
-            <Link
-              onPress={() => navigate("Login")}
-              style={styles.centerText}
-            >
+            <Link onPress={() => navigate("Login")}>
               Already have an account?
               {' '}
               <Text style={styles.linkText}>Log in here</Text>
@@ -109,12 +106,9 @@ const styles = StyleSheet.create({
   rightText: {
     textAlign: "right"
   },
-  centerText: {
-    textAlign: "center",
-    alignSelf: "flex-end"
-  },
   linkContainer: {
+    alignItems: "center",
     justifyContent: "flex-end",
-    flex: 1,
+    flexGrow: 1,
   }
 })

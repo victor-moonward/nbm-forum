@@ -16,7 +16,7 @@ interface IText {
 
 export function Link({ children, style, onPress }: IText) {
   return (
-    <Pressable onPress={onPress} style={styles.container}>
+    <Pressable onPress={onPress}>
       <TextCP style={[styles.text, style]}>
         {children}
       </TextCP>
@@ -25,14 +25,10 @@ export function Link({ children, style, onPress }: IText) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%"
-  },
   text: {
     fontFamily: Fonts.family.default,
     fontSize: Fonts.size.link,
     lineHeight: Fonts.height.text,
     color: Colors.primary,
-    width: "100%"
   }
 })
