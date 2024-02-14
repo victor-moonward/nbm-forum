@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet } from "react-native";
-import { SinglePost } from ".";
+import { PostCard } from ".";
 import { Posts } from "@/types";
 
 interface PostsContainerProps {
@@ -9,7 +9,7 @@ interface PostsContainerProps {
 export function PostsContainer({ receivedPosts }: PostsContainerProps) {
   return (
     <ScrollView>
-      {receivedPosts?.map(post => <SinglePost {...post} key={post.id} />)}
+      {receivedPosts?.map(post => <PostCard {...post} key={post.id} />)}
     </ScrollView>
   )
 }
