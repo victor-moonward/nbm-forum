@@ -9,3 +9,6 @@ export * from './TextField';
 export * from './Counter';
 export * from './Numbers';
 export * from './Check';
+export * from './Plus';
+export * from './Profile';
+export * from './Search';
