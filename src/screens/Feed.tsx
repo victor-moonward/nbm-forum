@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     flex: 1
   }
-})
+});
