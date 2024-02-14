@@ -6,12 +6,12 @@ import Logo from "@/assets/images/logo.png";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigation } from "@/types";
 
-interface IAuthBar {
+interface AuthBarProps {
   currentStep?: number;
   totalSteps?: number;
 }
 
-export function AuthBar({ currentStep, totalSteps }: IAuthBar) {
+export function AuthBar({ currentStep, totalSteps }: AuthBarProps) {
   const { navigate } = useNavigation<StackNavigation>();
   const showProgressBar = currentStep !== undefined && totalSteps !== undefined;
 

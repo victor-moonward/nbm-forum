@@ -1,6 +1,6 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 
-export interface ISVG {
+export interface SVGProps {
   color?: string;
   [key: string]: string | number | undefined;
 }
