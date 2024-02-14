@@ -1,8 +1,9 @@
 import Axios, { InternalAxiosRequestConfig } from "axios";
 import { BASE_URL } from "@env";
+import { getStoredData } from "@/utils/storage";
 
-function authRequestInterceptor(config: InternalAxiosRequestConfig) {
-  const token = '';
+async function authRequestInterceptor(config: InternalAxiosRequestConfig) {
+  const token = await getStoredData({ id: "user-token" });
 
   if (token) {
     config.headers.authorization = `Bearer ${token}`;
