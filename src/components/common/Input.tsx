@@ -1,24 +1,39 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import { Colors, Fonts } from "@/styles/theme";
 import { Text } from ".";
+import { Search } from "@/assets/icons";
 
 // TO-DO: Input props
 interface IInput {
   [key: string]: any;
 }
 
-export function Input({ label, icon, error, ...rest }: IInput) {
-  return (
-    <View style={styles.container}>
-      <View style={styles.labelContainer}>
-        {label && <Text style={styles.label}>{label}</Text>}
-        {error && <Text style={styles.errorMsg}>{error}</Text>}
+export function Input({ label, icon, error, layout, ...rest }: IInput) {
+
+  if (layout === "secondary") {
+    return (
+      <View style={secondaryLayoutStyles.container}>
+        <Search color={secondaryLayoutStyles.input.color} />
+        <TextInput
+          placeholderTextColor={secondaryLayoutStyles.input.color}
+          style={secondaryLayoutStyles.input}
+          {...rest}
+        />
       </View>
-      <View style={styles.input}>
+    )
+  }
+
+  return (
+    <View style={primaryLayoutStyles.container}>
+      <View style={primaryLayoutStyles.labelContainer}>
+        {label && <Text style={primaryLayoutStyles.label}>{label}</Text>}
+        {error && <Text style={primaryLayoutStyles.errorMsg}>{error}</Text>}
+      </View>
+      <View style={primaryLayoutStyles.input}>
         <TextInput
           {...rest}
-          placeholderTextColor={styles.placeholder.color}
-          style={styles.textInput}
+          placeholderTextColor={primaryLayoutStyles.placeholder.color}
+          style={primaryLayoutStyles.textInput}
         />
         {icon}
       </View>
@@ -26,13 +41,14 @@ export function Input({ label, icon, error, ...rest }: IInput) {
   )
 }
 
-const styles = StyleSheet.create({
-  label: {
-    fontWeight: Fonts.weight.bold,
-  },
+const primaryLayoutStyles = StyleSheet.create({
   container: {
     gap: 5,
     width: "100%"
+  },
+  labelContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   input: {
     borderColor: Colors.border,
@@ -44,18 +60,34 @@ const styles = StyleSheet.create({
     gap: 2,
     minHeight: 50,
   },
-  placeholder: {
-    color: Colors.placeholder
-  },
-  textInput: {
-    flex: 1,
-  },
-  labelContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
+  label: {
+    fontWeight: Fonts.weight.bold,
   },
   errorMsg: {
     fontSize: Fonts.size.link,
     color: Colors.warning
-  }
+  },
+  textInput: {
+    flex: 1,
+  },
+  placeholder: {
+    color: Colors.placeholder
+  },
 });
+
+const secondaryLayoutStyles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    backgroundColor: "#3839391A",
+    flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    alignItems: "center",
+    gap: 5,
+  },
+  input: {
+    color: Colors.placeholder,
+    fontSize: Fonts.size.input,
+    flex: 1,
+  }
+})
