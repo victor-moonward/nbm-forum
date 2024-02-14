@@ -8,5 +8,7 @@ export const Colors = {
   warning: "#FF5757",
   errorNotification: "#FA646433",
   defaultNotification: "#E9E9E9",
-  notificationText: "#656565"
+  notificationText: "#656565",
+  borderCard: "#e8e8e8",
+  tagBackground: "#3839391A"
 };
