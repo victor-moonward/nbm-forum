@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { getStoredData, storeData } from "@/utils/storage";
 import { UserData } from "@/types";
 
-interface IUseUser {
+interface UseUserProps {
   isLoading: boolean;
   isUserSignedIn: boolean;
   data: null | UserData['user'];
@@ -11,7 +11,7 @@ interface IUseUser {
   setUserData: (data: UserData) => void;
 }
 
-export const useUser = create<IUseUser>((set, get) => ({
+export const useUser = create<UseUserProps>((set) => ({
   isLoading: true,
   isUserSignedIn: false,
   data: null,
