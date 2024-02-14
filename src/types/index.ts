@@ -26,3 +26,23 @@ export type RootStackParamList = {
 }
 
 export type StackNavigation = StackNavigationProp<RootStackParamList>;
+
+export interface Posts {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: string;
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    avatar: string | null;
+    email: string;
+    telephone: string;
+  },
+  likes: number,
+  comments: number,
+  tags: Array<{
+    name: string
+  }>
+}
