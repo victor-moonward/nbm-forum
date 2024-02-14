@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { ArrowLeft } from "@/assets/icons/ArrowLeft";
 import { IconButton, Title } from "@/components/common";
 import { Colors } from "@/styles/theme";
@@ -44,6 +44,7 @@ export function AuthBar({ currentStep, totalSteps }: IAuthBar) {
         <View style={progressBarStyles.container}>
           {new Array(totalSteps).fill(0).map((_, index) => (
             <View
+              key={index}
               style={[
                 progressBarStyles.bar,
                 currentStep >= index ? progressBarStyles.activeBar : undefined
