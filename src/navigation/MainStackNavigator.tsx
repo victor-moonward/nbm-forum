@@ -4,8 +4,10 @@ import { useAuth } from '@/hooks/useAuth';
 import { Welcome } from '@/screens/Welcome';
 import { Login } from '@/screens/Login';
 import { Feed } from '@/screens/Feed';
+import { CreateAccount } from '@/screens/CreateAccount';
+import { RootStackParamList } from '@/types';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export function MainStackNavigator() {
   const { isLoading, isUserSignedIn } = useAuth();
@@ -25,6 +27,7 @@ export function MainStackNavigator() {
       <Stack.Group>
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="CreateAccount" component={CreateAccount} />
       </Stack.Group>
     )
   }

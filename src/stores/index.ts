@@ -11,6 +11,24 @@ interface IUseUser {
   setUserData: (data: UserData) => void;
 }
 
+type TFormValues = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
+  password: string;
+  confirmPassword: string;
+  acceptTerms: boolean;
+}
+
+interface ICreateAccount {
+  formInitialValues: TFormValues;
+  currentStep: number;
+  totalSteps: number;
+  handleNextStep: (data: Partial<TFormValues>) => void;
+  handlePreviousStep: () => void;
+}
+
 export const useUser = create<IUseUser>((set, get) => ({
   isLoading: true,
   isUserSignedIn: false,
@@ -44,4 +62,32 @@ export const useUser = create<IUseUser>((set, get) => ({
 
     set({ isUserSignedIn: true });
   },
-}))
+}));
+
+export const useCreateAccount = create<ICreateAccount>((set, get) => ({
+  formInitialValues: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    password: "",
+    confirmPassword: "",
+    acceptTerms: false
+  },
+  currentStep: 0,
+  totalSteps: 4,
+  handleNextStep: (data) => {
+    const prevCurrentStep = get().currentStep;
+    const prevFormValues = get().formInitialValues;
+
+    set({
+      currentStep: prevCurrentStep + 1,
+      formInitialValues: { ...prevFormValues, ...data }
+    });
+  },
+  handlePreviousStep: () => {
+    const currentStep = get().currentStep;
+
+    set({ currentStep: currentStep - 1 });
+  }
+}));
