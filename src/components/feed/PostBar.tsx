@@ -11,9 +11,7 @@ export function PostBar() {
     <View style={topBarStyles.container}>
       <IconButton
         onPress={() => navigate("Feed")}
-        icon={
-          <ArrowLeft color={topBarStyles.icon.color} />
-        }
+        icon={<ArrowLeft color={topBarStyles.icon.color} />}
       />
       <View style={topBarStyles.titleContainer}>
         <Title>Post</Title>

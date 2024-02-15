@@ -1,4 +1,4 @@
-import { Colors } from "@/styles/theme";
+import { Colors, Fonts } from "@/styles/theme";
 import { Posts, StackNavigation } from "@/types";
 import {
   Pressable,
@@ -30,10 +30,10 @@ interface ContentProps {
   commentsNumber: number;
 }
 
-export function HeaderDescription({ userName, createdAt }) {
+export function HeaderDescription({ userName, createdAt }: HeaderProps) {
   return (
     <View style={headerStyles.authorContainer}>
-      <Text>{userName}</Text>
+      <Text style={headerStyles.title}>{userName}</Text>
       <View style={headerStyles.splitter} />
       <Text>{formatDate(createdAt)}</Text>
     </View>
@@ -47,12 +47,12 @@ function Header({ userName, createdAt }: HeaderProps) {
         userName={userName}
         createdAt={createdAt}
       />
-      <Link
+      {/* <Link
         onPress={() => console.log("pressed")}
         style={headerStyles.editButton}
       >
         Edit
-      </Link>
+      </Link> */}
     </View>
   )
 }
@@ -129,7 +129,6 @@ export function PostCard({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingVertical: 16,
     paddingHorizontal: 20,
     borderBottomWidth: 5,
@@ -144,7 +143,11 @@ const styles = StyleSheet.create({
 const headerStyles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+  },
+  title: {
+    fontWeight: Fonts.weight.bold,
+    color: Colors.notificationText
   },
   authorContainer: {
     flexDirection: "row",

@@ -57,4 +57,5 @@ export interface Comments {
   text: string;
   user: User;
   userId: number;
+  comments: Array<number>
 }

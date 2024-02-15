@@ -8,12 +8,19 @@ interface IInput {
   [key: string]: any;
 }
 
-export function Input({ label, icon, error, layout, ...rest }: IInput) {
+export function Input({ 
+  label, 
+  icon, 
+  error, 
+  layout, 
+  containerStyle, 
+  ...rest 
+}: IInput) {
 
   if (layout === "secondary") {
     return (
-      <View style={secondaryLayoutStyles.container}>
-        <Search color={secondaryLayoutStyles.input.color} />
+      <View style={[secondaryLayoutStyles.container, containerStyle]}>
+        {icon}
         <TextInput
           placeholderTextColor={secondaryLayoutStyles.input.color}
           style={secondaryLayoutStyles.input}
