@@ -1,8 +1,8 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg";
-import { ISVG } from "@/types";
+import { SVGProps } from "@/types";
 
-export const VisibilityOn = ({ color = "#fff", ...props }: ISVG) => (
+export const VisibilityOn = ({ color = "#fff", ...props }: SVGProps) => (
   <Svg
     width={24}
     height={24}

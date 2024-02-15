@@ -14,7 +14,8 @@ export function Login() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.clean,
-    paddingVertical: 40,
+    paddingTop: 40,
+    paddingBottom: 20,
     paddingHorizontal: 16,
     flex: 1,
     gap: 30

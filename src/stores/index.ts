@@ -11,14 +11,25 @@ interface UseUserProps {
   setUserData: (data: UserData) => void;
 }
 
+interface CreateAccountProps {
+  formInitialValues: TFormValues;
+  currentStep: number;
+  totalSteps: number;
+  handleNextStep: (data: TFormValues) => void;
+}
+
+type TFormValues = {
+  firstName: string,
+  lastName: string,
+  email: string
+}
+
 export const useUser = create<UseUserProps>((set) => ({
   isLoading: true,
   isUserSignedIn: false,
   data: null,
   token: null,
   getUserData: async () => {
-
-    // Wrapped just to show the exceptional loader
     setTimeout(async () => {
       const token = await getStoredData({ id: 'user-token' });
       const data = await getStoredData({ id: 'user-data' });
@@ -44,4 +55,23 @@ export const useUser = create<UseUserProps>((set) => ({
 
     set({ isUserSignedIn: true });
   },
-}))
+}));
+
+export const useCreateAccount = create<CreateAccountProps>((set, get) => ({
+  formInitialValues: {
+    firstName: "",
+    lastName: "",
+    email: ""
+  },
+  currentStep: 0,
+  totalSteps: 4,
+  handleNextStep: (data) => {
+    const prevCurrentStep = get().currentStep;
+    const prevFormValues = get().formInitialValues;
+
+    set({
+      currentStep: prevCurrentStep + 1,
+      formInitialValues: { ...prevFormValues, ...data }
+    });
+  }
+}));

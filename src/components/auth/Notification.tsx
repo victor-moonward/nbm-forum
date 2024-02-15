@@ -3,7 +3,7 @@ import { Text } from "@/components/common";
 import { Colors } from "@/styles/theme";
 import { Error } from "@/assets/icons";
 
-interface INotification {
+interface NotificationProps {
   type: "error" | "success";
   message: string;
 }
@@ -13,7 +13,7 @@ const icons = {
   success: <></>
 };
 
-export function Notification({ type, message }: INotification) {
+export function Notification({ type, message }: NotificationProps) {
   return (
     <View style={styles.container}>
       {icons[type]}
@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.errorNotification,
     paddingVertical: 12,
     paddingHorizontal: 8,
-    borderRadius: 8
+    borderRadius: 8,
+    alignItems: "center"
   },
   text: {
     flexWrap: "wrap",

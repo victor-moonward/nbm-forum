@@ -1,12 +1,21 @@
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Button, IconButton, Input, Link, Text, Title } from "@/components/common";
+import { 
+  Button, 
+  IconButton, 
+  Input, 
+  Link, 
+  Text, 
+  Title 
+} from "@/components/common";
 import { ArrowRight, VisibilityOff, VisibilityOn } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
 import { useLogin } from "@/services/login";
 import { Notification } from ".";
 import { dictionaryMessage } from "@/constants/validation";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigation } from "@/types";
 
 export function LoginForm() {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
@@ -16,6 +25,7 @@ export function LoginForm() {
     isLoading,
     errorMessage
   } = useLogin();
+  const { navigate } = useNavigation<StackNavigation>();
   const {
     handleChange,
     handleBlur,
@@ -31,7 +41,7 @@ export function LoginForm() {
     onSubmit: handleFormSubmit,
     validateOnBlur: false,
     validateOnChange: false
-  })
+  });
 
   function handleShowPassword() {
     setIsPasswordHidden(prev => !prev)
@@ -94,7 +104,7 @@ export function LoginForm() {
         )}
       </View>
       <Link
-        onPress={() => console.log('test')}
+        onPress={() => navigate("CreateAccount")}
         style={styles.centerText}
       >
         Don’t have an account?

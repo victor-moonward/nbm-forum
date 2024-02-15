@@ -39,9 +39,9 @@ export function useLogin() {
   const setUserData = useUser(state => state.setUserData);
   const { mutate, isPending, isError, isSuccess } = useMutation({
     mutationFn: login,
-    onSuccess: async (data) => {
+    onSuccess: (data) => {
       if (data.accessToken && data.user) {
-        await setUserData(data);
+        setUserData(data);
       }
     }
   });
