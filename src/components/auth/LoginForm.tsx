@@ -1,7 +1,14 @@
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Button, IconButton, Input, Link, Text, Title } from "@/components/common";
+import { 
+  Button, 
+  IconButton, 
+  Input, 
+  Link, 
+  Text, 
+  Title 
+} from "@/components/common";
 import { ArrowRight, VisibilityOff, VisibilityOn } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
 import { useLogin } from "@/services/login";
@@ -34,7 +41,7 @@ export function LoginForm() {
     onSubmit: handleFormSubmit,
     validateOnBlur: false,
     validateOnChange: false
-  })
+  });
 
   function handleShowPassword() {
     setIsPasswordHidden(prev => !prev)
