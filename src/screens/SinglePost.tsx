@@ -1,16 +1,18 @@
-import { PostBar, PostCard, SingleComment } from "@/components/feed";
+import { PostBar, PostCard, ReplyBar, SingleComment } from "@/components/feed";
 import { useComments } from "@/services/getComments";
 import { usePosts } from "@/services/getPosts";
 import { useRoute } from "@react-navigation/native";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { SplashScreen } from "./SplashScreen";
 import { Text } from "@/components/common";
 import { Fonts } from "@/styles/theme";
+import { useSendPostComment } from "@/services/sendPostComment";
 
 export function SinglePost() {
   const { params } = useRoute();
   const { query: { data: posts } } = usePosts();
   const { data: receivedComments, refetch } = useComments({ id: params?.id });
+  const { mutate } = useSendPostComment({ updatePage: refetch })
   const currentPost = posts?.data.find(post => post.id === params?.id);
   const comments = receivedComments?.data;
 
@@ -34,13 +36,27 @@ export function SinglePost() {
           <Text style={styles.heading}>Comments</Text>
         </>
       )}
+      ListFooterComponent={() => (
+        <View style={styles.footerContainer}>
+          <ReplyBar
+            onSubmit={(value) => {
+              mutate({
+                text: value,
+                postId: params?.id,
+                commentId: params?.id
+              })
+            }}
+          />
+        </View>
+      )}
     />
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 40,
+    paddingTop: 40,
+    paddingBottom: 20
   },
   commentsWrapper: {
     padding: 20
@@ -50,5 +66,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 0
+  },
+  footerContainer: {
+    paddingTop: 20,
+    paddingHorizontal: 20
   }
 });

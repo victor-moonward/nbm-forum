@@ -8,13 +8,13 @@ interface IInput {
   [key: string]: any;
 }
 
-export function Input({ 
-  label, 
-  icon, 
-  error, 
-  layout, 
-  containerStyle, 
-  ...rest 
+export function Input({
+  label,
+  icon,
+  error,
+  layout,
+  containerStyle,
+  ...rest
 }: IInput) {
 
   if (layout === "secondary") {

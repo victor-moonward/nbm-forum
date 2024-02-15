@@ -12,3 +12,4 @@ export * from './Check';
 export * from './Plus';
 export * from './Profile';
 export * from './Search';
+export * from './ArrowUp';

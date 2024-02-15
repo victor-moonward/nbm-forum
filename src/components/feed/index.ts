@@ -4,3 +4,4 @@ export * from "./PostsContainer";
 export * from "./PostCard";
 export * from "./PostBar";
 export * from "./SingleComment";
+export * from "./ReplyBar";
