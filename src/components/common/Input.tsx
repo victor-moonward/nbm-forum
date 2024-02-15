@@ -4,9 +4,9 @@ import { Text } from ".";
 import { ChangeEvent, ReactNode } from "react";
 
 interface InputProps {
-  label: string;
+  label?: string;
   icon?: ReactNode;
-  error: string | undefined;
+  error?: string | undefined;
   placeholder: string;
   onChangeText?: (e: string | ChangeEvent<any>) => void;
   value?: string | undefined;
