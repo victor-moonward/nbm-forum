@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { IconButton, Input, Title } from "../common";
-import { Plus, Profile } from "@/assets/icons";
+import { Plus, Profile, Search } from "@/assets/icons";
 import { Colors } from "@/styles/theme";
 import { SingleTag } from ".";
 
@@ -29,6 +29,7 @@ export function TopBar({ receivedTags, handleTags }: TopBarProps) {
         <Input
           placeholder="Search"
           layout="secondary"
+          icon={<Search color={styles.input.color} />}
         />
       </View>
       <ScrollView
@@ -56,6 +57,9 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     borderBottomWidth: 5,
     borderBottomColor: Colors.borderCard
+  },
+  input: {
+    color: Colors.placeholder,
   },
   header: {
     flex: 1,
