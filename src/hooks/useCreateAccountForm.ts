@@ -10,10 +10,7 @@ const credentialsSchema = Yup.object().shape({
 });
 
 export function useCreateAccountForm() {
-  const {
-    formInitialValues,
-    handleNextStep
-  } = useCreateAccount(state => state);
+  const { formInitialValues, handleNextStep } = useCreateAccount(state => state);
 
   return {
     formInitialValues,
