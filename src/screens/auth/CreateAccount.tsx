@@ -1,7 +1,8 @@
 import {
   AuthBar,
   CredentialsForm,
-  LocationBlock
+  LocationBlock,
+  PasswordForm
 } from "@/components/auth";
 import { useCreateAccount } from "@/stores";
 import { Colors } from "@/styles/theme";
@@ -18,6 +19,7 @@ export function CreateAccount() {
       />
       {currentStep === 0 && <CredentialsForm />}
       {currentStep === 1 && <LocationBlock />}
+      {currentStep === 2 && <PasswordForm />}
     </View>
   )
 }

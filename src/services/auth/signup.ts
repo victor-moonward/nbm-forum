@@ -9,7 +9,7 @@ const credentialsSchema = Yup.object().shape({
     .required(dictionaryMessage.INVALID_EMAIL_ALTERNATIVE),
 });
 
-export function useCreateAccountForm() {
+export function useSignUpForm() {
   const { formInitialValues, handleNextStep } = useCreateAccount(state => state);
 
   return {

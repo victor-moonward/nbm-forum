@@ -2,6 +2,22 @@ import { create } from "zustand";
 import { getStoredData, storeData } from "@/utils/storage";
 import { UserData } from "@/types";
 
+type TCreateAccountForm = {
+  firstName: string,
+  lastName: string,
+  email: string,
+  password: string,
+  confirmPassword: string,
+  acceptTerms: boolean,
+  address: string
+}
+
+export type TCreatePostForm = {
+  title: string;
+  content: string;
+  tags: Array<string | never>
+}
+
 interface UseUserProps {
   isLoading: boolean;
   isUserSignedIn: boolean;
@@ -12,16 +28,21 @@ interface UseUserProps {
 }
 
 interface CreateAccountProps {
-  formInitialValues: TFormValues;
+  formInitialValues: TCreateAccountForm;
   currentStep: number;
   totalSteps: number;
-  handleNextStep: (data: TFormValues) => void;
+  handleNextStep: (data: Partial<TCreateAccountForm>) => void;
+  handlePreviousStep: () => void;
 }
 
-type TFormValues = {
-  firstName: string,
-  lastName: string,
-  email: string
+interface CreatePostProps {
+  formInitialValues: TCreatePostForm;
+  currentStep: number;
+  totalSteps: number;
+  handleFormValues: (data: Partial<TCreatePostForm>) => void;
+  handlePreviousStep: () => void;
+  handleNextStep: () => void;
+  resetFormValues: () => void;
 }
 
 export const useUser = create<UseUserProps>((set) => ({
@@ -61,7 +82,11 @@ export const useCreateAccount = create<CreateAccountProps>((set, get) => ({
   formInitialValues: {
     firstName: "",
     lastName: "",
-    email: ""
+    email: "",
+    address: "",
+    password: "",
+    confirmPassword: "",
+    acceptTerms: false
   },
   currentStep: 0,
   totalSteps: 4,
@@ -72,6 +97,49 @@ export const useCreateAccount = create<CreateAccountProps>((set, get) => ({
     set({
       currentStep: prevCurrentStep + 1,
       formInitialValues: { ...prevFormValues, ...data }
+    });
+  },
+  handlePreviousStep: () => {
+    const currentStep = get().currentStep;
+
+    set({ currentStep: currentStep - 1 });
+  }
+}));
+
+export const useCreatePost = create<CreatePostProps>((set, get) => ({
+  formInitialValues: {
+    content: "",
+    tags: [],
+    title: ""
+  },
+  currentStep: 0,
+  totalSteps: 2,
+  handleFormValues: (data) => {
+    const prevFormValues = get().formInitialValues;
+
+    set({ formInitialValues: { ...prevFormValues, ...data } });
+  },
+  handleNextStep: () => {
+    const prevCurrentStep = get().currentStep;
+
+    set({
+      currentStep: prevCurrentStep + 1,
+    })
+
+  },
+  handlePreviousStep: () => {
+    const currentStep = get().currentStep;
+
+    set({ currentStep: currentStep - 1 });
+  },
+  resetFormValues: () => {
+    set({
+      formInitialValues: {
+        content: "",
+        tags: [],
+        title: ""
+      },
+      currentStep: 0
     });
   }
 }));

@@ -1,10 +1,11 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { ArrowLeft } from "@/assets/icons/ArrowLeft";
 import { IconButton, Title } from "@/components/common";
 import { Colors } from "@/styles/theme";
 import Logo from "@/assets/images/logo.png";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigation } from "@/types";
+import { useCreateAccount } from "@/stores";
 
 interface AuthBarProps {
   currentStep?: number;
@@ -14,12 +15,22 @@ interface AuthBarProps {
 export function AuthBar({ currentStep, totalSteps }: AuthBarProps) {
   const { navigate } = useNavigation<StackNavigation>();
   const showProgressBar = currentStep !== undefined && totalSteps !== undefined;
+  const { handlePreviousStep } = useCreateAccount();
+
+  function handleGoBack() {
+    if (currentStep === 0 || !currentStep) {
+      navigate("Welcome");
+      return;
+    }
+
+    handlePreviousStep();
+  }
 
   return (
     <View style={authBar.container}>
       <View style={topBarStyles.container}>
         <IconButton
-          onPress={() => navigate("Welcome")}
+          onPress={handleGoBack}
           icon={
             <ArrowLeft color={topBarStyles.icon.color} />
           }
@@ -33,6 +44,7 @@ export function AuthBar({ currentStep, totalSteps }: AuthBarProps) {
         <View style={progressBarStyles.container}>
           {new Array(totalSteps).fill(0).map((_, index) => (
             <View
+              key={index}
               style={[
                 progressBarStyles.bar,
                 currentStep >= index ? progressBarStyles.activeBar : undefined
