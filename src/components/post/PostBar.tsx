@@ -3,10 +3,10 @@ import { ArrowLeft } from "@/assets/icons/ArrowLeft";
 import { IconButton, Title } from "@/components/common";
 import { Colors } from "@/styles/theme";
 import { useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "@/types";
+import { StackNavigation } from "@/types";
 
 export function PostBar() {
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation<StackNavigation>();
 
   return (
     <View style={topBarStyles.container}>

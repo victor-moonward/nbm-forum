@@ -1,12 +1,13 @@
-import { PostBar, PostCard, ReplyBar, SingleComment } from "@/components/feed";
-import { useComments } from "@/services/getComments";
-import { usePosts } from "@/services/getPosts";
+import { PostCard } from "@/components/feed";
+import { useComments } from "@/services/post/getComments";
+import { usePosts } from "@/services/post/getPosts";
 import { useRoute } from "@react-navigation/native";
 import { FlatList, StyleSheet, View } from "react-native";
-import { SplashScreen } from "./SplashScreen";
+import { SplashScreen } from "../common/SplashScreen";
 import { Text } from "@/components/common";
 import { Fonts } from "@/styles/theme";
-import { useSendPostComment } from "@/services/sendPostComment";
+import { useSendPostComment } from "@/services/post/sendPostComment";
+import { PostBar, ReplyBar, SingleComment } from "@/components/post";
 
 export function SinglePost() {
   const { params } = useRoute();

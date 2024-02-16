@@ -33,7 +33,7 @@ const passwordsSchema = Yup.object().shape({
     })
 });
 
-export function useCreateAccountForm() {
+export function useSignUpForm() {
   const { formInitialValues, handleNextStep } = useCreateAccount(state => state);
 
   return {

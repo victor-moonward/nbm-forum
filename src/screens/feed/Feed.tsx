@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet } from "react-native";
-import { useFeed } from "@/services/feed";
+import { useFeed } from "@/services/feed/feed";
 import { PostsContainer, TopBar } from "@/components/feed";
-import { SplashScreen } from "./SplashScreen";
+import { SplashScreen } from "../common/SplashScreen";
 
 export function Feed() {
   const {

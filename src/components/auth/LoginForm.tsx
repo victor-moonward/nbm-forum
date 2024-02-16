@@ -11,7 +11,7 @@ import {
 } from "@/components/common";
 import { ArrowRight, VisibilityOff, VisibilityOn } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
-import { useLogin } from "@/services/login";
+import { useLogin } from "@/services/auth/login";
 import { Notification } from ".";
 import { dictionaryMessage } from "@/constants/validation";
 import { useNavigation } from "@react-navigation/native";

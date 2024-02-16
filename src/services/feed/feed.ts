@@ -1,4 +1,4 @@
-import { usePosts } from "./getPosts";
+import { usePosts } from "../post/getPosts";
 import { useTags } from "./getTags";
 
 export function useFeed() {

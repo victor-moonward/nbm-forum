@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
 import { Input, Text } from "../common";
 import { Comments } from "@/types";
-import { HeaderDescription } from ".";
 import { Colors, Fonts } from "@/styles/theme";
 import { useState } from "react";
-import { useSendPostComment } from "@/services/sendPostComment";
+import { useSendPostComment } from "@/services/post/sendPostComment";
+import { HeaderDescription } from "../feed";
 
 interface SingleCommentProps extends Comments {
   postId: number;
@@ -65,13 +65,14 @@ export function SingleComment(props: SingleCommentProps) {
     comments,
   } = props;
 
+
   return (
     <View style={singleCommentStyles.container}>
       <View style={singleCommentStyles.header}>
-        <HeaderDescription
+        {/* <HeaderDescription
           userName={user.firstName}
           createdAt={createdAt}
-        />
+        /> */}
         <Text>
           {text}
         </Text>
@@ -109,4 +110,4 @@ const subCommentStyles = StyleSheet.create({
     color: Colors.inputIcon,
     fontSize: Fonts.size.link
   }
-})
+});

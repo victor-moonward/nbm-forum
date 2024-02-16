@@ -4,12 +4,12 @@ import { Button, Input, Link, Text, Title } from "@/components/common";
 import { ArrowRight } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
 import { Notification } from ".";
-import { useCreateAccountForm } from "@/services/createAccount";
+import { useSignUpForm } from "@/services/auth/signup";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigation } from "@/types";
 
 export function CredentialsForm() {
-  const { credentialsSchema, handleNextStep } = useCreateAccountForm();
+  const { credentialsSchema, handleNextStep } = useSignUpForm();
   const { navigate } = useNavigation<StackNavigation>();
   const {
     handleChange,

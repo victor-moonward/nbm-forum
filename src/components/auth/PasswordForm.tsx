@@ -15,7 +15,7 @@ import {
   VisibilityOn,
 } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
-import { useCreateAccountForm } from "@/hooks/useCreateAccountForm";
+import { useSignUpForm } from "@/hooks/auth/useSignupForm";
 import { PasswordReqBlock } from "./PasswordReqBlock";
 
 function handleIconVisibility(hiddenPassword: boolean) {
@@ -27,7 +27,11 @@ export function PasswordForm() {
     password: false,
     confirmPassword: false
   });
-  const { formInitialValues, passwordsSchema, handleNextStep } = useCreateAccountForm();
+  const {
+    formInitialValues,
+    passwordsSchema,
+    handleNextStep
+  } = useSignUpForm();
 
   function handleShowPassword(type: "password" | "confirmPassword") {
     setHidePassword(prev => ({ ...prev, [type]: !prev[type] }));
@@ -87,9 +91,10 @@ export function PasswordForm() {
           </View>
           <View>
             <CheckBox
-              onPress={() => setFieldValue('acceptTerms', !values.acceptTerms)}
+              onPress={(value) => setFieldValue('acceptTerms', !value)}
               placeholder="By ticking this box, I agree to the terms and conditions of NBM."
               checked={values.acceptTerms}
+              value={values.acceptTerms}
             />
           </View>
           <Button
