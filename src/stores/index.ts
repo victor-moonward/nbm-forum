@@ -11,17 +11,19 @@ interface UseUserProps {
   setUserData: (data: UserData) => void;
 }
 
+type TFormValues = {
+  firstName: string,
+  lastName: string,
+  email: string;
+  address: string;
+}
+
 interface CreateAccountProps {
   formInitialValues: TFormValues;
   currentStep: number;
   totalSteps: number;
-  handleNextStep: (data: TFormValues) => void;
-}
-
-type TFormValues = {
-  firstName: string,
-  lastName: string,
-  email: string
+  handleNextStep: (data: Partial<TFormValues>) => void;
+  handlePreviousStep: () => void;
 }
 
 export const useUser = create<UseUserProps>((set) => ({
@@ -61,7 +63,8 @@ export const useCreateAccount = create<CreateAccountProps>((set, get) => ({
   formInitialValues: {
     firstName: "",
     lastName: "",
-    email: ""
+    email: "",
+    address: ""
   },
   currentStep: 0,
   totalSteps: 4,
@@ -73,5 +76,10 @@ export const useCreateAccount = create<CreateAccountProps>((set, get) => ({
       currentStep: prevCurrentStep + 1,
       formInitialValues: { ...prevFormValues, ...data }
     });
+  },
+  handlePreviousStep: () => {
+    const currentStep = get().currentStep;
+
+    set({ currentStep: currentStep - 1 });
   }
 }));
