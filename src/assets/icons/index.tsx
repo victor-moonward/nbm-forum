@@ -4,3 +4,4 @@ export * from './ArrowRight';
 export * from './VisibilityOff';
 export * from './VisibilityOn';
 export * from './Error';
+export * from './ArrowForward';
