@@ -4,6 +4,7 @@ type TFonts = {
   },
   size: {
     title: number
+    input: number
     text: number
     link: number
   },
@@ -22,6 +23,7 @@ export const Fonts: TFonts = {
   },
   size: {
     title: 24,
+    input: 18,
     text: 16,
     link: 14
   },

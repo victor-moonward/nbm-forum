@@ -1,13 +1,13 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { 
-  Button, 
-  IconButton, 
-  Input, 
-  Link, 
-  Text, 
-  Title 
+import {
+  Button,
+  IconButton,
+  Input,
+  Link,
+  Text,
+  Title
 } from "@/components/common";
 import { ArrowRight, VisibilityOff, VisibilityOn } from "@/assets/icons";
 import { Colors, Fonts } from "@/styles/theme";
@@ -78,8 +78,7 @@ export function LoginForm() {
                 :
                 <VisibilityOn color={Colors.border} />
               }
-            />
-          }
+            />}
         />
         <Link
           onPress={() => console.log('test')}
@@ -103,14 +102,13 @@ export function LoginForm() {
           />
         )}
       </View>
-      <Link
-        onPress={() => navigate("CreateAccount")}
-        style={styles.centerText}
-      >
-        Don’t have an account?
-        {' '}
-        <Text style={styles.linkText}>Create one Here</Text>
-      </Link>
+      <View style={styles.linkContainer}>
+        <Link onPress={() => navigate("CreateAccount")}>
+          Don’t have an account?
+          {' '}
+          <Text style={styles.linkText}>Create one Here</Text>
+        </Link>
+      </View>
     </View>
   )
 }
@@ -138,8 +136,11 @@ const styles = StyleSheet.create({
   rightText: {
     textAlign: "right"
   },
-  centerText: {
-    textAlign: "center"
+  linkContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    height: 20
   },
   errorsContainer: {
     flex: 1

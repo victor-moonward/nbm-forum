@@ -1,17 +1,33 @@
-import { View } from "react-native";
-import { Text } from "react-native-svg";
+import { ScrollView, StyleSheet } from "react-native";
+import { useFeed } from "@/services/feed";
+import { PostsContainer, TopBar } from "@/components/feed";
 import { SplashScreen } from "./SplashScreen";
 
 export function Feed() {
-  const isLoading = true;
+  const {
+    receivedTags,
+    handleTags,
+    isLoadingPosts,
+    receivedPosts,
+    isLoadingTags
+  } = useFeed();
 
-  if (isLoading) return <SplashScreen colorSchema="secondary" />
+  if (isLoadingPosts || isLoadingTags) return <SplashScreen colorSchema="secondary" />;
 
   return (
-    <View style={{
-      flex: 1
-    }}>
-      <Text>Feed</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <TopBar
+        receivedTags={receivedTags}
+        handleTags={handleTags}
+      />
+      <PostsContainer receivedPosts={receivedPosts} />
+    </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 20,
+    flex: 1
+  }
+});

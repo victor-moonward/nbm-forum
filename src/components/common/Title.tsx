@@ -7,11 +7,12 @@ import {
 interface TitleProps {
   children: string;
   style?: TextStyle;
+  numberOfLines?: number;
 }
 
-export function Title({ children, style }: TitleProps) {
+export function Title({ children, style, numberOfLines}: TitleProps) {
   return (
-    <Text style={[styles.text, style]}>
+    <Text style={[styles.text, style]} numberOfLines={numberOfLines}>
       {children}
     </Text>
   )

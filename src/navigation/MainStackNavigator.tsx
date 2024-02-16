@@ -5,6 +5,7 @@ import { Welcome } from '@/screens/Welcome';
 import { Login } from '@/screens/Login';
 import { Feed } from '@/screens/Feed';
 import { CreateAccount } from '@/screens/CreateAccount';
+import { SinglePost } from '@/screens/SinglePost';
 import { RootStackParamList } from '@/types';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -19,6 +20,7 @@ export function MainStackNavigator() {
       return (
         <Stack.Group >
           <Stack.Screen name="Feed" component={Feed} />
+          <Stack.Screen name="SinglePost" component={SinglePost} />
         </Stack.Group>
       )
     }
