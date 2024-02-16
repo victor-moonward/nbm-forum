@@ -10,10 +10,12 @@ interface UseUserProps {
   getUserData: () => void;
   setUserData: (data: UserData) => void;
 }
+
 type TFormValues = {
   firstName: string,
   lastName: string,
-  email: string
+  email: string;
+  address: string;
 }
 
 interface CreateAccountProps {

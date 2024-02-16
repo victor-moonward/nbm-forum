@@ -21,7 +21,8 @@ export function CredentialsForm() {
     initialValues: {
       firstName: "",
       lastName: "",
-      email: ""
+      email: "",
+      address: ""
     },
     validationSchema: credentialsSchema,
     onSubmit: handleNextStep,

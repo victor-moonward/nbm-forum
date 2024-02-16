@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { View, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import { Input, Text } from ".";
 import { ArrowForward } from "@/assets/icons";
@@ -44,7 +44,7 @@ export function AutoCompleteInput({
         label={label}
         placeholder={placeholder}
         value={query}
-        onChangeText={handleInputChange}
+        onChangeText={(value) => handleInputChange(value as string)}
       />
       <FlatList
         style={styles.listContainer}

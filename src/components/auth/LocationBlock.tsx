@@ -2,7 +2,6 @@ import { StyleSheet, View } from "react-native";
 import { AutoCompleteInput, Button, Text, Title } from "../common";
 import { ArrowRight } from "@/assets/icons";
 import { Colors } from "@/styles/theme";
-import { useCreateAccountForm } from "@/hooks/useCreateAccountForm";
 import { useCreateAccount } from "@/stores";
 import { useState } from "react";
 
