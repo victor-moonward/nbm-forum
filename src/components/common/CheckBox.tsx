@@ -1,24 +1,26 @@
 import { Colors } from "@/styles/theme";
 import { Pressable, StyleSheet, View } from "react-native";
-import { Text } from ".";
 import { Check } from "@/assets/icons";
+import { Text } from ".";
 
 interface ICheckBox {
-  onPress: () => void;
+  onPress: (value: string | number | boolean) => void;
   checked: boolean;
-  placeholder: string
+  placeholder: string;
+  value: string | number | boolean;
 }
 
 export function CheckBox({
   onPress,
   placeholder,
-  checked
+  checked,
+  value
 }: ICheckBox) {
   return (
     <View style={styles.container}>
       <Pressable
         style={[styles.checkBox, checked ? styles.checked : undefined]}
-        onPress={onPress}
+        onPress={() => onPress(value)}
       >
         {checked && <Check />}
       </Pressable>

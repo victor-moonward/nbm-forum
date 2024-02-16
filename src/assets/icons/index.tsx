@@ -13,3 +13,4 @@ export * from './Plus';
 export * from './Profile';
 export * from './Search';
 export * from './ArrowUp';
+export * from './Close';

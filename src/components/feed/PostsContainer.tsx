@@ -9,7 +9,13 @@ interface PostsContainerProps {
 export function PostsContainer({ receivedPosts }: PostsContainerProps) {
   return (
     <ScrollView>
-      {receivedPosts?.map(post => <PostCard {...post} key={post.id} />)}
+      {receivedPosts?.map(post => (
+        <PostCard
+          {...post}
+          key={post.id}
+          handleEditPost={() => console.log("post")}
+        />
+      ))}
     </ScrollView>
   )
 }

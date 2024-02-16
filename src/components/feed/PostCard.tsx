@@ -13,11 +13,14 @@ import { SingleTag } from ".";
 import { Comment } from "@/assets/icons/Comment";
 import { useNavigation } from "@react-navigation/native";
 
-interface PostCardProps extends Posts { }
+interface PostCardProps extends Posts {
+  handleEditPost?: () => void;
+}
 
 interface HeaderProps {
   userName: string;
   createdAt: string;
+  handleEditPost?: () => void;
 }
 
 interface HeadingProps {
@@ -40,19 +43,22 @@ export function HeaderDescription({ userName, createdAt }: HeaderProps) {
   )
 }
 
-function Header({ userName, createdAt }: HeaderProps) {
+function Header({ userName, createdAt, handleEditPost }: HeaderProps) {
   return (
     <View style={headerStyles.container}>
       <HeaderDescription
         userName={userName}
         createdAt={createdAt}
+        handleEditPost={handleEditPost}
       />
-      {/* <Link
-        onPress={() => console.log("pressed")}
-        style={headerStyles.editButton}
-      >
-        Edit
-      </Link> */}
+      {handleEditPost && (
+        <Link
+          onPress={() => console.log("pressed")}
+          style={headerStyles.editButton}
+        >
+          Edit
+        </Link>
+      )}
     </View>
   )
 }
@@ -101,7 +107,8 @@ export function PostCard({
   tags,
   content,
   comments,
-  id
+  id,
+  handleEditPost
 }: PostCardProps) {
   const userName = user.firstName + user.lastName;
   const { navigate } = useNavigation<StackNavigation>();
@@ -114,6 +121,7 @@ export function PostCard({
       <Header
         userName={userName}
         createdAt={createdAt}
+        handleEditPost={handleEditPost}
       />
       <Heading
         title={title}

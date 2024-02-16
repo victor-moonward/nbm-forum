@@ -3,6 +3,8 @@ import { IconButton, Input, Title } from "../common";
 import { Plus, Profile, Search } from "@/assets/icons";
 import { Colors } from "@/styles/theme";
 import { SingleTag } from ".";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigation } from "@/types";
 
 interface TopBarProps {
   receivedTags: Array<{ name: string }> | undefined
@@ -10,6 +12,8 @@ interface TopBarProps {
 }
 
 export function TopBar({ receivedTags, handleTags }: TopBarProps) {
+  const { navigate } = useNavigation<StackNavigation>();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -17,7 +21,7 @@ export function TopBar({ receivedTags, handleTags }: TopBarProps) {
         <View style={styles.actions}>
           <IconButton
             icon={<Plus color={Colors.primary} />}
-            onPress={() => console.log("received")}
+            onPress={() => navigate("CreatePost")}
           />
           <IconButton
             icon={<Profile color={Colors.primary} />}
