@@ -74,7 +74,7 @@ export const useUser = create<UseUserProps>((set) => ({
     const token = await storeData({ id: 'user-token', value: accessToken });
     const data = await storeData({ id: 'user-data', value: user });
 
-    set({ isUserSignedIn: true });
+    set({ isUserSignedIn: true, token, data });
   },
 }));
 

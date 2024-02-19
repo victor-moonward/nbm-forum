@@ -4,6 +4,8 @@ import { Colors, Fonts } from "@/styles/theme";
 import { ArrowForward } from "@/assets/icons";
 import { ReactElement } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigation } from "@/types";
+import { PageTitle } from "./PageTitle";
 
 interface SingleInfoProps {
   screen: string;
@@ -21,7 +23,7 @@ function SingleInfo({
   label,
   icon
 }: SingleInfoProps) {
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation<StackNavigation>();
 
   function handleNavigation() {
     navigate(screen)
@@ -51,7 +53,7 @@ export function InfoBlock({
 }: InfoBlockProps) {
   return (
     <View style={infoBlockStyles.container}>
-      <Text style={infoBlockStyles.title}>{blockName}</Text>
+      <PageTitle>{blockName}</PageTitle>
       {options.map(item => <SingleInfo {...item} />)}
     </View>
   )
@@ -62,11 +64,7 @@ const infoBlockStyles = StyleSheet.create({
     paddingHorizontal: 20,
     gap: 8
   },
-  title: {
-    fontWeight: Fonts.weight.bold,
-    fontSize: Fonts.size.input,
-    marginBottom: 8
-  }
+
 });
 
 const singleInfoStyles = StyleSheet.create({

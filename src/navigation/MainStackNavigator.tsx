@@ -8,7 +8,10 @@ import { CreateAccount } from '@/screens/auth/CreateAccount';
 import { SinglePost } from '@/screens/post/SinglePost';
 import { CreatePost } from '@/screens/post/CreatePost';
 import { Settings } from '@/screens/profile/Settings';
+import { PersonalInformation } from '@/screens/profile/PersonalInformation';
 import { RootStackParamList } from '@/types';
+import { Location } from '@/screens/profile/Location';
+import { UpdatePassword } from '@/screens/profile/UpdatePassword';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -25,6 +28,9 @@ export function MainStackNavigator() {
           <Stack.Screen name="SinglePost" component={SinglePost} />
           <Stack.Screen name="CreatePost" component={CreatePost} />
           <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="PersonalInformation" component={PersonalInformation} />
+          <Stack.Screen name="Location" component={Location} />
+          <Stack.Screen name="UpdatePassword" component={UpdatePassword} />
         </Stack.Group>
       )
     }

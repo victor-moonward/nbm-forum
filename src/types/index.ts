@@ -25,6 +25,9 @@ export type RootStackParamList = {
   CreateAccount: undefined;
   CreatePost: undefined;
   Settings: undefined;
+  PersonalInformation: undefined;
+  Location: undefined;
+  UpdatePassword: undefined;
   SinglePost: {
     id: number
   };
