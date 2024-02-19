@@ -25,7 +25,7 @@ export function TopBar({ receivedTags, handleTags }: TopBarProps) {
           />
           <IconButton
             icon={<Profile color={Colors.primary} />}
-            onPress={() => console.log("test")}
+            onPress={() => navigate("Settings")}
           />
         </View>
       </View>
