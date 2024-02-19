@@ -10,5 +10,6 @@ export const Colors = {
   defaultNotification: "#E9E9E9",
   notificationText: "#656565",
   borderCard: "#e8e8e8",
-  tagBackground: "#3839391A"
+  tagBackground: "#3839391A",
+  buttonBackground: "borderCard"
 };
