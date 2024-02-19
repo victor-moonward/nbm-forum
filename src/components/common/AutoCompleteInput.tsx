@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { View, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import { Input, Text } from ".";
 import { ArrowForward } from "@/assets/icons";
@@ -9,13 +9,15 @@ interface IAutoCompleteInput {
   onSelect: (name: string) => void;
   placeholder: string;
   label: string;
+  defaultValue?: string;
 }
 
 export function AutoCompleteInput({
-  data, 
-  onSelect, 
-  label, 
-  placeholder 
+  data,
+  onSelect,
+  label,
+  placeholder,
+  defaultValue
 }: IAutoCompleteInput) {
   const [query, setQuery] = useState('');
   const [filteredData, setFilteredData] = useState<Array<string | never>>([]);
@@ -37,6 +39,12 @@ export function AutoCompleteInput({
     setFilteredData([]);
     onSelect(item);
   };
+
+  useEffect(() => {
+    if (!defaultValue) return;
+
+    handleItemSelect(defaultValue);
+  }, [defaultValue])
 
   return (
     <View style={styles.container}>

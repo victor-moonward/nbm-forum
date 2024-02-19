@@ -40,16 +40,16 @@ export function Input({
   }
 
   return (
-    <View style={primaryLayoutStyles.container}>
+    <View style={[primaryLayoutStyles.container,containerStyle]}>
       <View style={primaryLayoutStyles.labelContainer}>
         {label && <Text style={primaryLayoutStyles.label}>{label}</Text>}
         {error && <Text style={primaryLayoutStyles.errorMsg}>{error}</Text>}
       </View>
       <View style={primaryLayoutStyles.input}>
         <TextInput
-          {...rest}
           placeholderTextColor={primaryLayoutStyles.placeholder.color}
           style={primaryLayoutStyles.textInput}
+          {...rest}
         />
         {icon}
       </View>
